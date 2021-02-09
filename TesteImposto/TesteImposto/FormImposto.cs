@@ -59,14 +59,18 @@ namespace TesteImposto
 
             foreach (DataRow row in table.Rows)
             {
+                bool brinde = false;
+                if (row["Brinde"] != null)
+                    brinde = true;
+
                 pedido.ItensDoPedido.Add(
-                    new PedidoItem()
-                    {
-                        Brinde = Convert.ToBoolean(row["Brinde"]),
-                        CodigoProduto = row["Codigo do produto"].ToString(),
-                        NomeProduto = row["Nome do produto"].ToString(),
-                        ValorItemPedido = Convert.ToDouble(row["Valor"].ToString())
-                    });
+                new PedidoItem()
+                {
+                    Brinde = brinde,
+                    CodigoProduto = row["Codigo do produto"].ToString(),
+                    NomeProduto = row["Nome do produto"].ToString(),
+                    ValorItemPedido = Convert.ToDouble(row["Valor"].ToString())
+                });
             }
             int retorno = service.GerarNotaFiscal(pedido);
             if (retorno == 0)
@@ -108,7 +112,7 @@ namespace TesteImposto
             {
                 dataGridViewPedidos.Rows[i].DataGridView.Columns.Clear();
             }
-
+            GetTablePedidos();
         }
 
         private void button1_Click(object sender, EventArgs e)

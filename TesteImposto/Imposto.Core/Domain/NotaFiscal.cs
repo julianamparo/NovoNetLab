@@ -20,7 +20,7 @@ namespace Imposto.Core.Domain
         public string EstadoDestino { get; set; }
         public string EstadoOrigem { get; set; }
 
-        public IEnumerable<NotaFiscalItem> ItensDaNotaFiscal { get; set; }
+        public List<NotaFiscalItem> ItensDaNotaFiscal { get; set; }
 
         public NotaFiscal()
         {
@@ -31,7 +31,7 @@ namespace Imposto.Core.Domain
         {
 
             NotaFiscalRepository nfRepository = new NotaFiscalRepository();
-            this.NumeroNotaFiscal = 0;
+            this.NumeroNotaFiscal = nfRepository.RetornarMaxNumeroNota() +1;
             this.Serie = new Random().Next(Int32.MaxValue);
             this.NomeCliente = pedido.NomeCliente;
 
@@ -47,6 +47,8 @@ namespace Imposto.Core.Domain
                 {
                     NotaFiscalItem notaFiscalItem = new NotaFiscalItem();
 
+                    notaFiscalItem.Cfop = cfop;
+                    notaFiscalItem.IdNotaFiscal = this.NumeroNotaFiscal;
 
                     if (this.EstadoDestino == this.EstadoOrigem)
                     {
@@ -83,14 +85,23 @@ namespace Imposto.Core.Domain
 
                     notaFiscalItem.NomeProduto = itemPedido.NomeProduto;
                     notaFiscalItem.CodigoProduto = itemPedido.CodigoProduto;
+
+                    ItensDaNotaFiscal.Add(notaFiscalItem);
                 }
 
-                int sucesso = GerarXML(this);
+                int sucessoXML = GerarXML(this);
 
-                nfRepository.InserirPedido(this);
+                if (sucessoXML == 0)
+                {
+                    nfRepository.InserirPedido(this);
 
-                //operação bem sucedida
-                return 0;
+                    //operação bem sucedida
+                    return 0;
+                }
+                else
+                {
+                    return sucessoXML;
+                }
             }
 
             else
@@ -103,9 +114,11 @@ namespace Imposto.Core.Domain
 
         public int GerarXML(NotaFiscal notafiscal)
         {
+            NotaFiscalRepository nfRepository = new NotaFiscalRepository();
             try
             {
-                XmlTextWriter xml = new XmlTextWriter(@"C:\Users\julia\source\repos\NovoNetLab\TesteImposto\XML\NotaFiscal_" + notafiscal.Serie + ".xml", System.Text.Encoding.UTF8);
+                string diretorio = nfRepository.BuscarDiretorioXML();
+                XmlTextWriter xml = new XmlTextWriter(diretorio + @"\NotaFiscal_" + notafiscal.NumeroNotaFiscal + ".xml", System.Text.Encoding.UTF8);
                 xml.WriteStartDocument(true);
                 xml.Formatting = Formatting.Indented;
                 xml.Indentation = 2;

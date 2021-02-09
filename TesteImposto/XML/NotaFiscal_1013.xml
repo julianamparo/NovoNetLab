@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<NotaFiscal>
+  <NumeroNotaFiscal>1013</NumeroNotaFiscal>
+  <Serie>1593277962</Serie>
+  <NomeCliente>Bla</NomeCliente>
+  <EstadoOrigem>SP</EstadoOrigem>
+  <EstadoDestino>RO</EstadoDestino>
+  <NumeroNotaFiscal>1013</NumeroNotaFiscal>
+  <ItensPedido>
+    <IdNotaFiscal>1013</IdNotaFiscal>
+    <Cfop>6.006</Cfop>
+    <TipoIcms>60</TipoIcms>
+    <BaseIcms>312</BaseIcms>
+    <AliquotaIcms>0,18</AliquotaIcms>
+    <ValorIcms>56,16</ValorIcms>
+    <NomeProduto>Bla</NomeProduto>
+    <CodigoProduto>123</CodigoProduto>
+    <BaseIpi>312</BaseIpi>
+    <AliquotaIpi>0,1</AliquotaIpi>
+    <ValorIpi>31,2</ValorIpi>
+  </ItensPedido>
+</NotaFiscal>

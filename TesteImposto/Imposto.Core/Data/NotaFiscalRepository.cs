@@ -47,27 +47,29 @@ namespace Imposto.Core.Data
 
                     cmd.ExecuteScalar();
 
-                    foreach (var item in notaFiscal.ItensDaNotaFiscal)
+                    using (var cmdItem = Connection.CreateCommand())
                     {
-                        cmd.CommandText = "dbo.p_nota_fiscal_item";
-                        cmd.CommandType = CommandType.StoredProcedure;
+                        foreach (var item in notaFiscal.ItensDaNotaFiscal)
+                        {
+                            cmdItem.CommandText = "dbo.p_nota_fiscal_item";
+                            cmdItem.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add(new SqlParameter("@pId", item.Id));
-                        cmd.Parameters.Add(new SqlParameter("@pCfop", item.Cfop));
-                        cmd.Parameters.Add(new SqlParameter("@pTipoIcms", item.TipoIcms));
-                        cmd.Parameters.Add(new SqlParameter("@pBaseIcms", item.BaseIcms));
-                        cmd.Parameters.Add(new SqlParameter("@pAliquotaIcms", item.AliquotaIcms));
-                        cmd.Parameters.Add(new SqlParameter("@pTipoIcms", item.TipoIcms));
-                        cmd.Parameters.Add(new SqlParameter("@pBaseIcms", item.BaseIcms));
-                        cmd.Parameters.Add(new SqlParameter("@pAliquotaIcms", item.AliquotaIcms));
-                        cmd.Parameters.Add(new SqlParameter("@@pValorIcms", item.ValorIcms));
+                            cmdItem.Parameters.Add(new SqlParameter("@pId", item.Id));
+                            cmdItem.Parameters.Add(new SqlParameter("@pIdNotaFiscal", item.IdNotaFiscal));
+                            cmdItem.Parameters.Add(new SqlParameter("@pCfop", item.Cfop));
+                            cmdItem.Parameters.Add(new SqlParameter("@pTipoIcms", item.TipoIcms));
+                            cmdItem.Parameters.Add(new SqlParameter("@pBaseIcms", item.BaseIcms));
+                            cmdItem.Parameters.Add(new SqlParameter("@pAliquotaIcms", item.AliquotaIcms));
+                            cmdItem.Parameters.Add(new SqlParameter("@pValorIcms", item.TipoIcms));
+                            cmdItem.Parameters.Add(new SqlParameter("@pNomeProduto", item.NomeProduto));
+                            cmdItem.Parameters.Add(new SqlParameter("@pCodigoProduto", item.CodigoProduto));
+                            cmdItem.Parameters.Add(new SqlParameter("@pBaseIpi", item.BaseIpi));
+                            cmdItem.Parameters.Add(new SqlParameter("@pAliquotaIpi", item.AliquotaIpi));
+                            cmdItem.Parameters.Add(new SqlParameter("@pValorIpi", item.ValorIpi));
 
+                            cmdItem.ExecuteScalar();
 
-                        cmd.Parameters.Add(new SqlParameter("@pNomeProduto", item.NomeProduto));
-                        cmd.Parameters.Add(new SqlParameter("@pCodigoProduto", item.CodigoProduto));
-
-
-                        cmd.ExecuteScalar();
+                        }
                     }
                 }
             }
@@ -108,7 +110,7 @@ namespace Imposto.Core.Data
                     cmd.ExecuteScalar();
 
                     string retorno = CFOP.Value.ToString();
-                    
+
                     return retorno;
                 }
             }
@@ -144,7 +146,7 @@ namespace Imposto.Core.Data
             }
 
         }
-       
+
         public DataTable PopularEstadosOrigem()
         {
             //Chamar procedure que retorna os valores CFOP
@@ -155,7 +157,7 @@ namespace Imposto.Core.Data
                 using (var cmd = Connection.CreateCommand())
                 {
                     cmd.CommandText = "select distinct estadoOrigem from notafiscal";
-                    
+
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
                     DataTable dados = new DataTable();
                     dataAdapter.Fill(dados);
@@ -193,5 +195,63 @@ namespace Imposto.Core.Data
             }
 
         }
+
+        public int RetornarMaxNumeroNota()
+        {
+            int numeroNotaFiscal = 0;
+            //Chamar procedure que retorna os valores CFOP
+            try
+            {
+
+
+                if (Connection.State != ConnectionState.Open)
+                    Connection.Open();
+                using (var cmd = Connection.CreateCommand())
+                {
+                    cmd.CommandText = "select max(numeronotafiscal) from notafiscal";
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        numeroNotaFiscal = reader.GetInt32(0);
+                    }
+
+
+                }
+            }
+            finally
+            {
+                if (Connection.State == ConnectionState.Open)
+                    Connection.Close();
+            }
+            return numeroNotaFiscal;
+        }
+
+        public string BuscarDiretorioXML()
+        {
+            string diretorio = "";
+            //Chamar procedure que retorna os valores CFOP
+            try
+            {
+                if (Connection.State != ConnectionState.Open)
+                    Connection.Open();
+                using (var cmd = Connection.CreateCommand())
+                {
+                    cmd.CommandText = "select diretorio from diretorioconfig where nomediretorio = 'XML'";
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        diretorio = reader.GetString(0);
+                    }
+                }
+            }
+            finally
+            {
+                if (Connection.State == ConnectionState.Open)
+                    Connection.Close();
+            }
+            return diretorio;
+        }
+
+
     }
 }

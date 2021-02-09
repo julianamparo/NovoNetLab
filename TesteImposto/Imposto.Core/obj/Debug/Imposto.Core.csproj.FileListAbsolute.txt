@@ -4,3 +4,9 @@ C:\Users\julia\Source\Repos\net-lab\TesteImposto\Imposto.Core\obj\Debug\Imposto.
 C:\Users\julia\Source\Repos\net-lab\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.csproj.CoreCompileInputs.cache
 C:\Users\julia\Source\Repos\net-lab\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.dll
 C:\Users\julia\Source\Repos\net-lab\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.pdb
+C:\Users\julia\source\repos\NovoNetLab\TesteImposto\Imposto.Core\bin\Debug\Imposto.Core.dll
+C:\Users\julia\source\repos\NovoNetLab\TesteImposto\Imposto.Core\bin\Debug\Imposto.Core.pdb
+C:\Users\julia\source\repos\NovoNetLab\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.csprojAssemblyReference.cache
+C:\Users\julia\source\repos\NovoNetLab\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.csproj.CoreCompileInputs.cache
+C:\Users\julia\source\repos\NovoNetLab\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.dll
+C:\Users\julia\source\repos\NovoNetLab\TesteImposto\Imposto.Core\obj\Debug\Imposto.Core.pdb

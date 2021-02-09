@@ -104,7 +104,10 @@ namespace TesteImposto
             textBoxNomeCliente.Text = "";
             cmbEstadosOrigem.SelectedIndex = -1;
             cmbEstadosDestino.SelectedIndex = -1;
-            dataGridViewPedidos.Rows.Clear();
+            for (int i = 0; i < dataGridViewPedidos.RowCount; i++)
+            {
+                dataGridViewPedidos.Rows[i].DataGridView.Columns.Clear();
+            }
 
         }
 

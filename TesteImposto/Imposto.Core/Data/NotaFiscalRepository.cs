@@ -156,7 +156,7 @@ namespace Imposto.Core.Data
                     Connection.Open();
                 using (var cmd = Connection.CreateCommand())
                 {
-                    cmd.CommandText = "select distinct estadoOrigem from notafiscal";
+                    cmd.CommandText = "select distinct estadoOrigem from definicaocfop";
 
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
                     DataTable dados = new DataTable();
@@ -181,7 +181,7 @@ namespace Imposto.Core.Data
                     Connection.Open();
                 using (var cmd = Connection.CreateCommand())
                 {
-                    cmd.CommandText = "select distinct estadoDestino from notafiscal";
+                    cmd.CommandText = "select distinct estadoDestino from definicaocfop";
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
                     DataTable dados = new DataTable();
                     dataAdapter.Fill(dados);

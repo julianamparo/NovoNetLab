@@ -1,0 +1,48 @@
+INSERT INTO DefinicaoCFOP VALUES ('RJ','SP','6.000');
+INSERT INTO DefinicaoCFOP VALUES ('PE','SP','6.001');
+INSERT INTO DefinicaoCFOP VALUES ('MG','SP','6.002');
+INSERT INTO DefinicaoCFOP VALUES ('PB','SP','6.003');
+INSERT INTO DefinicaoCFOP VALUES ('PR','SP','6.004');
+INSERT INTO DefinicaoCFOP VALUES ('PI','SP','6.005');
+INSERT INTO DefinicaoCFOP VALUES ('RO','SP','6.006');
+INSERT INTO DefinicaoCFOP VALUES ('SE','SP','6.007');
+INSERT INTO DefinicaoCFOP VALUES ('TO','SP','6.008');
+INSERT INTO DefinicaoCFOP VALUES ('SE','SP','6.009');
+INSERT INTO DefinicaoCFOP VALUES ('PA','SP','6.010');
+INSERT INTO DefinicaoCFOP VALUES ('RJ','MG','6.000');
+INSERT INTO DefinicaoCFOP VALUES ('PE','MG','6.001');
+INSERT INTO DefinicaoCFOP VALUES ('MG','MG','6.002');
+INSERT INTO DefinicaoCFOP VALUES ('PB','MG','6.003');
+INSERT INTO DefinicaoCFOP VALUES ('PR','MG','6.004');
+INSERT INTO DefinicaoCFOP VALUES ('PI','MG','6.005');
+INSERT INTO DefinicaoCFOP VALUES ('RO','MG','6.006');
+INSERT INTO DefinicaoCFOP VALUES ('SE','MG','6.007');
+INSERT INTO DefinicaoCFOP VALUES ('TO','MG','6.008');
+INSERT INTO DefinicaoCFOP VALUES ('SE','MG','6.009');
+INSERT INTO DefinicaoCFOP VALUES ('PA','MG','6.010');
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+    

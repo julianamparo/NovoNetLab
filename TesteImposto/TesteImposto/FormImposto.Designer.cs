@@ -105,6 +105,7 @@
             // 
             // cmbEstadosOrigem
             // 
+            this.cmbEstadosOrigem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstadosOrigem.FormattingEnabled = true;
             this.cmbEstadosOrigem.Location = new System.Drawing.Point(95, 34);
             this.cmbEstadosOrigem.Name = "cmbEstadosOrigem";
@@ -113,6 +114,7 @@
             // 
             // cmbEstadosDestino
             // 
+            this.cmbEstadosDestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstadosDestino.FormattingEnabled = true;
             this.cmbEstadosDestino.Location = new System.Drawing.Point(95, 61);
             this.cmbEstadosDestino.Name = "cmbEstadosDestino";

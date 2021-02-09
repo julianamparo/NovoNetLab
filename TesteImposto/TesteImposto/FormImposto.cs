@@ -108,11 +108,15 @@ namespace TesteImposto
             textBoxNomeCliente.Text = "";
             cmbEstadosOrigem.SelectedIndex = -1;
             cmbEstadosDestino.SelectedIndex = -1;
-            for (int i = 0; i < dataGridViewPedidos.RowCount; i++)
-            {
-                dataGridViewPedidos.Rows[i].DataGridView.Columns.Clear();
+            for (int i = 1; i < dataGridViewPedidos.Rows.Count; i++)
+            { 
+                dataGridViewPedidos.Rows[i].Cells[0].Value = "";
+                dataGridViewPedidos.Rows[i].Cells[1].Value = "";
+                dataGridViewPedidos.Rows[i].Cells[2].Value = "";
+                dataGridViewPedidos.Rows[i].Cells[3].Value = false;
+                
             }
-            GetTablePedidos();
+           // GetTablePedidos();
         }
 
         private void button1_Click(object sender, EventArgs e)

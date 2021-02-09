@@ -91,7 +91,7 @@
             this.dataGridViewPedidos.Location = new System.Drawing.Point(6, 109);
             this.dataGridViewPedidos.Name = "dataGridViewPedidos";
             this.dataGridViewPedidos.Size = new System.Drawing.Size(1028, 325);
-            this.dataGridViewPedidos.TabIndex = 7;
+            this.dataGridViewPedidos.TabIndex = 6;
             // 
             // buttonGerarNotaFiscal
             // 
@@ -109,7 +109,7 @@
             this.cmbEstadosOrigem.Location = new System.Drawing.Point(95, 34);
             this.cmbEstadosOrigem.Name = "cmbEstadosOrigem";
             this.cmbEstadosOrigem.Size = new System.Drawing.Size(121, 21);
-            this.cmbEstadosOrigem.TabIndex = 9;
+            this.cmbEstadosOrigem.TabIndex = 4;
             // 
             // cmbEstadosDestino
             // 
@@ -117,14 +117,14 @@
             this.cmbEstadosDestino.Location = new System.Drawing.Point(95, 61);
             this.cmbEstadosDestino.Name = "cmbEstadosDestino";
             this.cmbEstadosDestino.Size = new System.Drawing.Size(121, 21);
-            this.cmbEstadosDestino.TabIndex = 10;
+            this.cmbEstadosDestino.TabIndex = 5;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(773, 440);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 23);
-            this.button1.TabIndex = 11;
+            this.button1.TabIndex = 7;
             this.button1.Text = "Limpar Formulário";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);

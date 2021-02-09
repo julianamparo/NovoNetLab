@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<NotaFiscal>
+  <NumeroNotaFiscal>1014</NumeroNotaFiscal>
+  <Serie>210464055</Serie>
+  <NomeCliente>asdasd</NomeCliente>
+  <EstadoOrigem>SP</EstadoOrigem>
+  <EstadoDestino>RO</EstadoDestino>
+  <NumeroNotaFiscal>1014</NumeroNotaFiscal>
+  <ItensPedido>
+    <IdNotaFiscal>1014</IdNotaFiscal>
+    <Cfop>6.006</Cfop>
+    <TipoIcms>60</TipoIcms>
+    <BaseIcms>34</BaseIcms>
+    <AliquotaIcms>0,18</AliquotaIcms>
+    <ValorIcms>6,12</ValorIcms>
+    <NomeProduto>ADDA</NomeProduto>
+    <CodigoProduto>12343</CodigoProduto>
+    <BaseIpi>34</BaseIpi>
+    <AliquotaIpi>0,1</AliquotaIpi>
+    <ValorIpi>3,4</ValorIpi>
+  </ItensPedido>
+</NotaFiscal>

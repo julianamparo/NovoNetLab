@@ -51,35 +51,59 @@ namespace TesteImposto
         private void buttonGerarNotaFiscal_Click(object sender, EventArgs e)
         {
             NotaFiscalService service = new NotaFiscalService();
-            pedido.EstadoOrigem = cmbEstadosOrigem.Text;
-            pedido.EstadoDestino = cmbEstadosDestino.Text;
-            pedido.NomeCliente = textBoxNomeCliente.Text;
 
-            DataTable table = (DataTable)dataGridViewPedidos.DataSource;
+            if (ValidarCampos()) {
+                pedido.EstadoOrigem = cmbEstadosOrigem.Text;
+                pedido.EstadoDestino = cmbEstadosDestino.Text;
+                pedido.NomeCliente = textBoxNomeCliente.Text;
 
-            foreach (DataRow row in table.Rows)
-            {
-                bool brinde = false;
-                if (row["Brinde"] != null)
-                    brinde = true;
+                DataTable table = (DataTable)dataGridViewPedidos.DataSource;
 
-                pedido.ItensDoPedido.Add(
-                new PedidoItem()
+                foreach (DataRow row in table.Rows)
                 {
-                    Brinde = brinde,
-                    CodigoProduto = row["Codigo do produto"].ToString(),
-                    NomeProduto = row["Nome do produto"].ToString(),
-                    ValorItemPedido = Convert.ToDouble(row["Valor"].ToString())
-                });
-            }
-            int retorno = service.GerarNotaFiscal(pedido);
-            if (retorno == 0)
+                    bool brinde = false;
+                    if (row["Brinde"] != null)
+                        brinde = true;
+
+                    pedido.ItensDoPedido.Add(
+                    new PedidoItem()
+                    {
+                        Brinde = brinde,
+                        CodigoProduto = row["Codigo do produto"].ToString(),
+                        NomeProduto = row["Nome do produto"].ToString(),
+                        ValorItemPedido = Convert.ToDouble(row["Valor"].ToString())
+                    });
+                }
+                int retorno = service.GerarNotaFiscal(pedido);
+                if (retorno == 0)
+                {
+                    MessageBox.Show("Operação concluída com sucesso");
+                    LimparForm();
+                }
+                if (retorno == 1)
+                    MessageBox.Show("Estado Origem/Destino sem definição de CFOP");
+                }
+        }
+
+        private bool ValidarCampos()
+        {
+            if (textBoxNomeCliente.Text == "")
             {
-                MessageBox.Show("Operação concluída com sucesso");
-                LimparForm();
+                MessageBox.Show("Digite o nome do cliente");
+                return false;
             }
-            if (retorno == 1)
-                MessageBox.Show("Estado Origem/Destino sem definição de CFOP");
+            if (cmbEstadosOrigem.SelectedIndex == -1)
+            {
+                MessageBox.Show("Selecione o Estado de Origem");
+                return false;
+            }
+            if (cmbEstadosDestino.SelectedIndex == -1)
+            {
+                MessageBox.Show("Selecione o Estado de Destino");
+                return false;
+            }
+
+            return true;
 
         }
 
